@@ -1,0 +1,42 @@
+<html>
+</html>
+    <head>
+
+        <script  type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function(){ 
+
+                $('img').click(function(){ 
+                    $(this).hide();
+                })
+
+                $("button").click(function(){
+                     $("img").show("img");
+                })
+            });
+
+        </script>
+
+    </head>
+
+    <body>
+        <style>
+            img{
+                width: 200px;
+                height: 200px;
+            }
+        </style>
+            <img src="ninja.png" alt="ninja1">
+            <img src="ninja.png" alt="ninja2">
+            <img src="ninja.png" alt="ninja3">
+            <img src="ninja.png" alt="ninja4">
+            <br>
+            <img src="ninja.png" alt="ninja5">
+            <img src="ninja.png" alt="ninja6">
+            <img src="ninja.png" alt="ninja7">
+            <img src="ninja.png" alt="ninja8">
+            <br>
+            <button>Restore</button>
+    </body>
+
+</html>
