@@ -1,0 +1,176 @@
+<html>
+</html>
+    <head>
+
+        <script  type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function(){ //always use this, this is good jquery-practice (in <head>)
+               
+               //.click
+                $('h4').click(function(){ 
+                    alert('Nope');
+                })
+
+                //.hide <- needs to have show "//" to have this work
+                $('p').hide(); 
+
+                //.show
+                $('p').show();
+                
+                //.toggle
+                $("button").click(function(){
+                    $("h1").toggle();
+                });
+
+                //.slideDown
+                $("#top").click(function(){
+                    $("#bottom").slideDown("slow"); //panel slide down
+                });
+
+                //.slideUp
+                $("#top").click(function(){
+                   $("#bottom").slideUp("slow"); //panel slide up, the page has it slide back up because the .slideDown has on one click to it
+                });
+
+                //.slideToggle
+                $("#top2").click(function(){
+                    $("#bottom2").slideToggle("fast");
+                });
+
+                //.fadeIn
+                $("button").click(function(){
+                    $("#div1").fadeIn();
+                    $("#div2").fadeIn("slow");
+                    $("#div3").fadeIn(3000);
+                })
+
+                //.fadeOut
+                $("button").click(function(){
+                    $("#div1").fadeOut();
+                    $("#div2").fadeOut("slow");  //its fading in and out because its within the same button/ fade out if you have another button
+                    $("#div3").fadeOut(3000);
+                });
+
+                //.addClass
+                $("button").click(function(){
+                    $("p").addClass("big");
+                })
+
+                //.before & .after
+                $("button").click(function(){
+                    $("p").before("<p>Hello world!</p>");
+                });
+                $("button").click(function(){
+                    $("p").after("<p>Hello world!</p>");
+                });
+
+                //.append
+                $('.append').click(function(){
+                    $('.result').append('<h4>NO ZONE!</h4>'); //.append adds HTML! also find a way to UNAPPEND IT***
+                });
+
+                //.html
+                $("button").click(function(){
+                    $("p").html("Hello <b>world!</b>");
+                });
+
+                //.attr ->of an image
+                $("button").click(function(){
+                    $("img").attr("width", "500");
+                });
+
+                //.val
+                $("button").click(function(){
+                    $("input:text").val("Glenn Quagmire");
+                });
+
+                //.text
+                $("button").click(function(){
+                    $("p").text("Hello world!");
+                });
+            });
+
+        </script>
+
+    </head>
+
+    <body>
+<!-- .click -->
+        <h4>Click me!</h4>
+<!-- .hide & .show -->
+        <p>Hide paragraph for .hide, this is currently shown because of .show()</p>
+<!-- .toggle -->
+        <h1>.toggle</h1>
+        <button>Toggle between hide() and show()</button>
+<!-- .slideDown & .slideUp &.slideToggle-->
+        <style>
+            #top, #bottom {
+                padding: 5px;
+                text-align: center;
+                background-color: #cce3ee;
+                border: solid 1px #c3c3c3;
+            }
+            
+            #bottom {
+                padding: 50px;
+                display: none;
+            }
+
+            #top2, #bottom2 {
+                padding: 5px;
+                text-align: center;
+                background-color: #e8eecc;
+                border: solid 1px #c00b0b;
+            }
+            
+            #bottom2 {
+                padding: 50px;
+                display: none;
+            }
+
+            .big {
+            font-size: 150%;
+            color: red;
+            }
+
+            }
+        </style>
+            <div id="top">Click to slide down panel</div>
+            <div id="bottom">Bottom Slide down</div>
+
+            <div id="top2">Click twice slide down and up panel</div>
+            <div id="bottom2">Click again top bar</div>
+<!-- .fadeIn & .fadeOut -->
+        <button>Click to fade in boxes</button><br><br>
+        <div id="div1" style="width:80px;height:80px;display:none;background-color:rgb(26, 83, 170);"></div><br>
+        <div id="div2" style="width:80px;height:80px;display:none;background-color:rgb(17, 68, 102);"></div><br>
+        <div id="div3" style="width:80px;height:80px;display:none;background-color:rgb(42, 42, 136);"></div>
+
+<!-- .addClass -->
+        <button>.addClass</button>
+<!-- .before -->
+        <button class="p">Insert content before each p element</button>
+
+<!-- .after -->
+        <button>Change content of all p elements</button>
+
+        <p>This is a paragraph.</p>
+        <p>This is another paragraph.</p>
+        
+<!-- .attr -->
+        <img src="img.jpg" alt="#" width="284" height="213"><br>
+
+<!-- .val -->
+        <p>Name: <input type="text" name="user"></p>
+
+        <button>Set the value of the input field</button>
+        
+<!-- .text -->
+
+        <button>Set text content for all p elements</button>
+
+        <p>This is a paragraph.</p>
+        <p>This is another paragraph.</p>
+    </body>
+
+</html>
