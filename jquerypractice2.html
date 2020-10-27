@@ -1,0 +1,69 @@
+<html>
+</html>
+    <head>
+
+        <script  type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function(){ //always use this, this is jquery practice
+               
+                $('h4').click(function(){ //use for click on the text, this is with h4 only since it commanded it
+                    alert('Nope');
+                })
+
+                alert('you are now leaving the page!'); //use for starting the page
+
+
+                $('p').hide(); //to hide in the beginning, *depend on the order it was placed in
+
+
+                $('#hide').click(function(){ //hiding when clicking on the button
+                    $('p').hide();
+                })
+
+
+                $('#show').click(function(){ //showing when clicking on the button
+                    $('p').show();
+                })
+
+                //manipulation methods add/change either text or html to your document
+                $('h3').hover(function(){
+                    $('h2').text('NEO!');  //try to find how to NOT HOVER ANYMORE*****
+                });
+
+                $('.append').click(function(){
+                    $('.result').append('<h4>NO BITCH ZONE!</h4>'); //.append adds HTML! also find a way to UNAPPEND IT***
+                });
+
+                //css method
+                $('button').click(function(){
+                    $('button').css('background-color','yellow'); //changes the color find a way to not change COLOR****
+                });
+
+            });
+
+        </script>
+
+    </head>
+
+    <body>
+    
+        <h4>Click me!</h4>
+        <h4>READY FOR EDC?</h4>
+        <h4>Got Milk?</h4>
+        <p>This is a paragraph</p>
+
+        <p>This is also a paragraph</p>
+        <button id='hide'>This will hide all paragraphs!</button>
+        <button id='show'>Click to show all parahraphs</button>
+
+        <a id='mylink' href="http://www.google.com">go to Google!</a>
+        <h3>What does baby corgi wants?</h3>
+        <h2>Milk?</h2>
+        <button class='append'>Click to see if you are a bitch!</button>
+        <div class='result'></div>
+        <p>This is a paragraph</p>
+
+
+    </body>
+
+</html>
