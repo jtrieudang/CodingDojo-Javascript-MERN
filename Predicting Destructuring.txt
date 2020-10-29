@@ -1,0 +1,70 @@
+Predicting Destructuring
+1.
+const cars = ['Tesla', 'Mercedes', 'Honda']
+const [ randomCar ] = cars
+const [ ,otherRandomCar ] = cars
+//Predict the output
+console.log(randomCar)
+console.log(otherRandomCar)
+
+output: tesla, mercedes
+_________________________________________________________________________________________________________________
+2.
+const employee = {
+    name: 'Elon',
+    age: 47,
+    company: 'Tesla'
+}
+//if "var name" = Crazy 8
+const { name: otherName } = employee;
+//Predict the output
+console.log(name);
+//name = Crazy 8
+console.log(otherName); // refers back to name where name = Elon
+
+output: undefined because 'othername' it's not in the dictionary of the employee, Elon
+_________________________________________________________________________________________________________________
+3.
+const person = {
+    name: 'Phil Smith',
+    age: 47,
+    height: '6 feet', <-comma//if 
+// if password: crazy 0
+}
+const password = '12345';
+const { password: hashedPassword } = person;  
+//Predict the output
+console.log(password);
+// because its the var being called
+console.log(hashedPassword);
+//refers back to password on line 34 where if password was in the dictionary of person (line 28), would be crazy 0 (line 32)
+
+output: 12345, because hashedPassword its not part of the dictionary but part of the var alone.
+_________________________________________________________________________________________________________________
+4.
+const numbers = [8, 2, 3, 5, 6, 1, 67, 12, 2];
+const [,first] = numbers; (2)
+const [,,,second] = numbers; (5)
+const [,,,,,,,,third] = numbers; (2)
+//Predict the output
+console.log(first == second);
+console.log(first == third);
+
+output: false; undefined/Null because they don't equal, true; 2 because they equal to each other
+_________________________________________________________________________________________________________________
+5.
+const lastTest = {
+    key: 'value',
+    secondKey: [1, 5, 1, 8, 3, 3]
+}
+const { key } = lastTest;
+const { secondKey } = lastTest;
+const [ ,willThisWork] = secondKey;
+//Predict the output
+console.log(key);
+console.log(secondKey);
+console.log(secondKey[0]);
+console.log(willThisWork);
+
+output:  value, [1, 5, 1, 8, 3, 3], 1, 5
+_________________________________________________________________________________________________________________
