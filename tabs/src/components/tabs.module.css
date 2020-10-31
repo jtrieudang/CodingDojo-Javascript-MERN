@@ -1,0 +1,21 @@
+.headers{
+    display: flex;
+}
+
+.header{
+    border: 1px solid lightgray;
+    padding: 15px 20px;
+    margin-right: 5px;
+    cursor: pointer;
+}
+
+.active {
+    background: black;
+    color: white;
+}
+
+.content{
+    border: 1px solid lightgray;
+    padding: 15px;
+    cursor: pointer;
+}
