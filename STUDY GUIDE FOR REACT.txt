@@ -1,0 +1,70 @@
+STUDY GUIDE FOR REACT
+
+1. Create a new directory
+2. Inside install 'npm init -y'
+3. Install express and mongoose ('npm install express' & 'npm install mongoose')
+4. Open vscode and double check if both are install in package.json
+5. Create a server.json and import express, then app listen port (nodemon)
+    
+    const express = require('express');
+    const app = express();
+    const port = 8000;
+    
+    app.listen(port, () => console.log(`Listening on port: ${port}`) );
+
+6. Create a folder server and inside the folder create 4 folders for CONFIG, CONTROLLERS , MODELS, ROUTES
+7. CD.. back and install react app ('npx create-react-app PROJECT-NAME')
+
+
+8. Create a PROJECT.controller.js, PROJECT.routes.js, PROJECT.model.js, mongoose.config.js in where it each belong in of the folders
+9. Run nodemon after you input the coding inside the files and check on POSTMAN
+
+10. Go into the client folder and install axios 'npm install axios'
+11. Create a Main.js in SCR folder and  input this:
+
+    import React, { useEffect, useState } from 'react';
+
+    import axios from 'axios';
+
+    export default () =>{
+        const [ message, setMessage ] = useState('Loading....');
+
+        useEffect(()=> {
+            axios.get('http://localhost:8000/api')
+            .then(response => {
+                setMessage(response.data.message)
+            })
+        }, [])
+
+        return (
+            <div>
+                <h2>Message from the backend: {message}</h2>
+            </div>
+        )
+    }
+
+12. Go to app.js in SCR folder and import "import Main from '.Main';" with "<Main />" --> replaced with <header>'s
+13. 'npm start' to double check if working/ run react project
+14. Go back to PROJECT folder and install cors 'npm install cors'
+15. Go to server.js and add 'app.use(cor())' and require cors 'const cors = require('cors')'
+    
+    const express = require('express');
+    const cors = require('cors')
+
+    const app = express();
+    app.use(cors());
+
+16. Create the mongoose and the model.
+
+17. Cd back into client folder then.... Create a view folder in SCR and take Main.js and put it in there. (MAKE SURE TO UPDATE the import in your app.js)
+18. Create a folder call components and make a PROJECTForm.js (if you are making a form)
+19. Run both backend and frontend running to see if data being imput
+
+
+HOW TO RETRIEVE
+1. Go to controller.js and add a get/find method and add the route
+2. To get a list go to components folder and make a PROJECTList.js (if wanting to make a list), then add it to Main.js '<ProjectList/> <---- make sure to also import in main.js
+
+RUN BOTH SERVER:
+1. One in your client 'npm run start'
+2. outside the client which is the Server 'nodemon server.js'
