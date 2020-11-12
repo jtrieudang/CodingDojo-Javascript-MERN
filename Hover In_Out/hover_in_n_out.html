@@ -1,0 +1,35 @@
+<html>
+</html>
+    <head>
+
+        <script  type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function(){ 
+                
+                $("img").hover(function(){ 
+		         var temp = $(this).attr("data-alt-src");
+		                    $(this).attr("data-alt-src", $(this).attr("src"));
+		                    $(this).attr("src", temp);
+                	});
+            });
+
+        </script>
+
+    </head>
+
+    <body>
+    <style>
+        img{
+            width: 200px;
+            height: 200px;
+        }
+    </style>
+            <img src='hair1.png' data-alt-src='hair5.png' />
+            <img src='hair3.png' data-alt-src='hair6.png' />
+            <img src='hair4.png' data-alt-src='hair7.png' />
+            <img src='hair2.png' data-alt-src='hair8.png' />
+
+        
+    </body>
+
+</html>
