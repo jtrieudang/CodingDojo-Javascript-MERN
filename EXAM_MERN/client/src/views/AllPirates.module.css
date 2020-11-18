@@ -1,0 +1,14 @@
+.wrapper {
+    display: flex;
+    border: solid;
+    justify-content: space-around;
+    text-align: center;
+}
+
+li{
+    list-style-type: none;
+}
+
+.block {
+    display: inline-block;
+}
