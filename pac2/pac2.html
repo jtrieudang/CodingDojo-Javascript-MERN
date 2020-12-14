@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Pacman</title>
+        <link rel="stylesheet" type="text/css" href="pac2.css">
+    </head>
+    <body>
+        <img src="blackbg.jpg" alt="galaxia" id="imagen">
+        <div id="container">
+            <div id="world"></div>
+            <div id="pacman"></div>
+            <div id="pacman1"></div>
+            <div id="score">0</div>
+            <div id="score1">0</div>
+            <div id="vidas">3</div>
+            <div id="vidas1">3</div>
+        </div>
+        List of features to build
+
+        1) Have JS to display the world of brick/coin/etc - DONE!
+        2) Have the pacman move up and down - DONE!
+        <script>
+            var world=[
+                [2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2],
+                [2,0,2,1,1,1,1,1,1,1,1,1,1,2,1,1,1,1,1,1,1,1,1,1,1,1,1,2],
+                [2,1,2,1,1,1,2,2,2,2,2,2,1,2,1,1,3,1,1,1,1,2,2,2,2,1,1,2],
+                [2,1,2,1,1,1,2,1,1,1,1,1,1,2,1,1,2,2,2,2,2,2,1,1,2,1,3,2],
+                [2,1,2,1,3,1,2,1,1,4,1,1,1,2,1,1,2,1,1,1,1,1,1,1,2,1,1,2],
+                [2,1,2,2,2,2,2,1,2,1,2,1,1,2,1,1,2,1,2,2,2,2,2,2,2,1,1,2],
+                [2,1,1,1,1,1,1,1,2,1,2,1,2,2,1,1,2,1,2,1,1,1,1,1,1,1,1,2],
+                [2,1,2,1,1,2,1,1,2,1,2,1,3,1,1,1,2,1,2,2,2,2,1,2,2,2,2,2],
+                [5,1,2,2,2,2,1,1,2,1,2,1,1,1,1,2,2,1,1,1,1,1,1,2,1,2,1,5],
+                [2,1,1,3,1,1,1,1,2,1,2,1,2,2,1,1,1,3,1,1,1,1,1,2,1,2,1,2],
+                [2,1,2,1,2,1,1,1,2,1,2,1,1,4,1,1,1,1,1,2,2,1,1,2,1,2,1,2],
+                [2,1,2,1,2,1,2,1,2,1,2,2,2,2,1,2,1,1,1,1,2,1,1,1,1,2,1,2],
+                [2,1,2,1,2,1,2,1,2,1,1,1,1,1,1,2,1,1,1,1,2,1,2,1,1,1,1,2],
+                [2,1,2,2,2,1,2,1,2,2,2,2,2,2,1,2,2,2,2,2,2,1,2,2,2,2,2,2],
+                [2,1,1,1,1,1,2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,2],
+                [2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2]
+            ];
+            
+            var score = 0;
+
+            var score1 = 0;
+
+            var vidas = 3;
+
+            var vidas1=3;
+
+            var pacman={
+                x:1,
+                y:1
+            };
+
+
+            var pacman1={
+                e:26,
+                f:14
+            }
+
+            function getRandomInt(min, max) {
+                return Math.floor(Math.random() * (max - min)) + min;
+            }
+
+            function displayWorld(){
+                var output = '';
+
+                for(var i=0; i<world.length; i++){
+                    output+="\n<div class='row'>\n";
+                    for(var j=0; j<world[i].length; j++){
+                        if(world[i][j]==3)
+                            output+="<div class='cherry'></div>";
+                        else if(world[i][j]==2)
+                            output+="<div class='brick'></div>";
+                        else if(world[i][j]==1)
+                            output+="<div class='coin'></div>";
+                        else if(world[i][j]==0)
+                            output+="<div class='empty'></div>";
+                        else if(world[i][j]==4)
+                            output+="<div class='ghost'></div>";
+                        else if(world[i][j]==5)
+                            output+="<div class='portal'></div>";
+                    }
+                    output+="\n</div>";
+                }
+                //console.log(output)
+                document.getElementById('world').innerHTML=output;
+            }
+
+            function displayPacman(){
+                document.getElementById("pacman").style.top=pacman.y*25+"px";
+                document.getElementById("pacman").style.left=pacman.x*25+"px";
+            }
+
+            function displayPacman1(){
+                document.getElementById("pacman1").style.top=pacman1.f*25+"px";
+                document.getElementById("pacman1").style.left=pacman1.e*25+"px";
+            }
+
+            function displayScore(){
+                document.getElementById("score").innerHTML=score;
+            }
+            function displayScore1(){
+                document.getElementById("score1").innerHTML=score1;
+            } 
+
+            function displayVidas(){
+                document.getElementById("vidas").innerHTML=vidas;
+            }
+
+            function displayVidas1(){
+                document.getElementById("vidas1").innerHTML=vidas1;
+            }
+
+            
+
+            displayWorld()
+            displayPacman()
+            displayPacman1()
+            displayScore()
+            displayScore1()
+            displayVidas()
+            displayVidas1()
+
+            document.onkeydown=function(e){
+                // flechas
+                if(e.keyCode==37 && world[pacman.y][pacman.x-1]!=2){
+                    document.getElementById("pacman").style.backgroundImage = "url('pacman_left.gif')";
+                    pacman.x--;
+                    
+                }
+                else if(e.keyCode==39 && world[pacman.y][pacman.x+1]!=2){
+                    document.getElementById("pacman").style.backgroundImage = "url('pacman_right.gif')";
+                    pacman.x++;
+                }
+                else if(e.keyCode==38 && world[pacman.y-1][pacman.x]!=2){
+                    document.getElementById("pacman").style.backgroundImage = "url('pacman_up.gif')";
+                    pacman.y--;
+                }
+                else if(e.keyCode==40 && world[pacman.y+1][pacman.x]!=2){
+                    document.getElementById("pacman").style.backgroundImage = "url('pacman_down.gif')";
+                    pacman.y++;
+                }
+                    // adws
+                if(e.keyCode==65 && world[pacman1.f][pacman1.e-1]!=2){
+                    document.getElementById("pacman1").style.backgroundImage = "url('pacman_left.gif')";
+                    pacman1.e--;
+                    
+                }
+                else if(e.keyCode==68 && world[pacman1.f][pacman1.e+1]!=2){
+                    document.getElementById("pacman1").style.backgroundImage = "url('pacman_right.gif')";
+                    pacman1.e++;
+                }
+                else if(e.keyCode==87 && world[pacman1.f-1][pacman1.e]!=2){
+                    document.getElementById("pacman1").style.backgroundImage = "url('pacman_up.gif')";
+                    pacman1.f--;
+                }
+                else if(e.keyCode==83 && world[pacman1.f+1][pacman1.e]!=2){
+                    document.getElementById("pacman1").style.backgroundImage = "url('pacman_down.gif')";
+                    pacman1.f++;
+                }
+                //first pacman
+                if(world[pacman.y][pacman.x]==1){
+                    world[pacman.y][pacman.x]=0;
+                    displayWorld();
+                    score+=10;
+                    displayScore()
+                }
+                if(world[pacman.y][pacman.x]==3){
+                    world[pacman.y][pacman.x]=0
+                    displayWorld();
+                    score+=50;
+                    displayScore()
+                }
+                //second pacman
+                if(world[pacman1.f][pacman1.e]==1){
+                    world[pacman1.f][pacman1.e]=0;
+                    displayWorld();
+                    score1+=10;
+                    displayScore1()
+                }
+                if(world[pacman1.f][pacman1.e]==3){
+                    world[pacman1.f][pacman1.e]=0
+                    displayWorld();
+                    score1+=50;
+                    displayScore1()
+                }
+                if(world[pacman.y][pacman.x]==4){
+                    pacman.x=1
+                    pacman.y=1
+                    displayPacman()
+                    vidas--
+                    displayVidas()
+                }
+                if(world[pacman1.f][pacman1.e]==4){
+                    pacman1.e=17
+                    pacman1.f=9
+                    displayPacman1()
+                    vidas1--
+                    displayVidas1()
+                }
+                if(world[pacman1.f][pacman1.e]==5){
+                    pacman1.e=26
+                    pacman1.f=8
+                    displayPacman1()
+                    vidas1--
+                    displayVidas1()
+                }
+                
+                if(vidas==0){
+                    if(e.keyCode==37 || e.keyCode==39 || e.keyCode==38 || e.keyCode==40){
+                        document.getElementById("pacman").style.backgroundImage = "url('pacman_down.gif')";
+                        pacman.x=1
+                        pacman.y=1
+                        displayPacman()
+                    }
+                }
+                if(vidas1==0){
+                    if(e.keyCode==65 || e.keyCode==68 || e.keyCode==87 || e.keyCode==83){
+                        document.getElementById("pacman1").style.backgroundImage = "url('pacman_left.gif')";
+                        pacman1.e=17
+                        pacman1.f=9
+                        displayPacman1()
+                    }
+                }
+
+                displayPacman()
+                displayPacman1()
+                console.log(e.keyCode);
+            }
+        </script>
+    </body>
+</html>
